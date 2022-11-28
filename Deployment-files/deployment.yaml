@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-tutorial-deployment
+  
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tutorial 
+  template:
+    metadata:
+      labels:
+        app: tutorial
+    spec:
+      containers:
+        - name: flask-tutorial-container
+          image: rohitvish14/flask-tutorial:v1.2
+          ports:
+            - containerPort: 5000
+              protocol: TCP   
+      
