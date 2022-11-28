@@ -1,0 +1,13 @@
+Procedure of deployment with Minukube in a Windows machine -
+1. Create the Dockerfile.
+2. Make sure that docker desktop is running. Build the docker image using docker build -t <repo/image_name:tag> .
+3. Push it to the repo using docker push.
+4. Test if the docker container is running or not using docker run <image_id>
+5. To test if the app is accessible in your local browser or not run: docker run -d -p 5000:5000 <repo/image_name:tag>. Then check in browser with localhost:5000
+6. Create a deployment.yaml and service.yaml file.
+7. In your cmd prompt, run - minikube start --driver=docker. This will run a single-node minikube cluster as a docker container
+8. To run K8s commands, make sure that kubectl is installed on your machine. Then, deploy the deployment and service yamls. 
+9. Also, make sure to run 'minikube tunnel' command in another terminal so that the loadbalancer service gets an external IP. In our case, it will be localhost only since we're using minikube and not a cloud provider.
+10. Check in your browser with localhost:5000. You should now see your production ready application.
+
+If you have a cloud provider like AWS, GCP, Azure, you can get a domain name and deploy there to actually make other people use this productionized app.
